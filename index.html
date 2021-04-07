@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--  -->
+    <!-- For AJAX -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--  -->
     <link rel="stylesheet" href="blogStyle.css">
-    <!--  -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- AJAX -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -20,11 +22,12 @@
 </head>
 
 <style>
-    .navbar:nth-child(1){
+    .navbar:nth-child(1) {
         box-shadow: 0 0.4px 6px rgba(0, 0, 0, 0.4);
         /* border-bottom: 2px solid rgba(0, 0, 0, 0.5); */
     }
-    .frontImage{
+
+    .frontImage {
         width: 100%;
         height: 80vh;
         background: rgb(16, 141, 199);
@@ -32,101 +35,152 @@
         background-size: cover;
         background-attachment: fixed;
     }
-    .recentStory .card{
+
+    .recentStory .card {
         background: teal;
         height: 400px;
     }
-    .design .card{
+
+    .design .card {
         background: purple;
         height: 400px;
     }
-    .movies .card{
+
+    .movies .card {
         background: mediumorchid;
         height: 400px;
     }
-    .others .card{
+
+    .others .card {
         background: lightcoral;
         height: 400px;
     }
-    .popular .card{
+
+    .popular .card {
         background: indigo;
         height: 400px;
     }
+
     .recentStory .text,
     .design .text,
     .movies .text,
     .others .text,
-    .popular .text{
+    .popular .text {
         border-top-right-radius: 40px;
         margin-top: 280px;
         padding: 8px;
         margin-left: 0;
     }
+
     .recentStory,
     .design,
     .movies,
     .others,
-    .popular{
+    .popular {
         margin: 40px auto;
     }
+
+    .recentStory .col-sm-4,
+    .design .col-sm-4,
+    .movies .col-sm-4,
+    .others .col-sm-4,
+    .popular .col-sm-4 {
+        overflow: hidden;
+    }
+
     .recentStory .card,
     .design .card,
     .movies .card,
     .others .card,
-    .popular .card{
+    .popular .card {
         margin: 20px auto;
         padding: 0;
         background-size: cover;
         background-position: bottom;
-        scale: 0.9;
-        transition: scale 1s ease;
-        filter: grayscale(40%);
+        transition: scale 1s ease, opacity 0.75s ease, filter 0.75s ease;
+        filter: brightness(100%);
     }
+
     .recentStory .card:hover,
     .design .card:hover,
     .movies .card:hover,
     .others .card:hover,
-    .popular .card:hover{
-        filter: grayscale(0%);
+    .popular .card:hover {
+        scale: 1.09;
         cursor: pointer;
-        scale: 1;
     }
-    .recentStory .card .container-fluid .col-sm-10,
-    .design .card .container-fluid .col-sm-10,
-    .movies .card .container-fluid .col-sm-10,
-    .others .card .container-fluid .col-sm-10,
-    .popular .card .container-fluid .col-sm-10{
-        width:80%;
+
+    .recentStory .card .container-fluid .text,
+    .design .card .container-fluid .text,
+    .movies .card .container-fluid .text,
+    .others .card .container-fluid .text,
+    .popular .card .container-fluid .text {
+        width: 80%;
         color: white;
         background-color: rgba(223, 17, 17, 0.8);
         position: absolute;
+        /* z-index: -1; */
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
     }
-    .recentStory .card .container-fluid .col-sm-10{
+
+    .recentStory .card .container-fluid .col-sm-10 {
         background-color: rgba(0, 128, 128, 0.8);
     }
-    .design .card .container-fluid .col-sm-10{
+
+    .design .card .container-fluid .col-sm-10 {
         background-color: rgba(139, 0, 139, 0.8);
     }
-    .popular .card .container-fluid .col-sm-10{
+
+    .popular .card .container-fluid .col-sm-10 {
         background-color: rgba(12, 67, 151, 0.8);
     }
-    .contactBar li{
+
+    .content {
+        /* opacity: 0;9 */
+        position: absolute;
+        top: 0px;
+        margin: 20px;
+        z-index: -1;
+        color: rgb(93, 168, 168);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        word-spacing: 1px;
+    }
+    @media screen and (max-width:600px){
+        .content{
+            font-size: 18px;
+            letter-spacing: 1px;
+            word-spacing: 1px;
+        }
+    }
+    .content a {
+        /* text-decoration: underline; */
+        width: 100%;
+        text-align: center;
+        font-style: italic;
+    }
+
+    .contactBar li {
         font-size: 25px;
         margin: auto 5px;
     }
-    .otherLinks .row ul li{
+
+    .otherLinks .row ul li {
         background-color: transparent;
     }
-    .otherLinks .row a{
+
+    .otherLinks .row a {
         color: white;
     }
-    .otherLinks{
+
+    .otherLinks {
         border-bottom: 2px solid rgb(180, 14, 14);
     }
-    .line{
+
+    .line {
         background: rgb(180, 14, 14);
-        height: 3px;
+        height: 1px;
         width: 200px;
         margin: auto;
     }
@@ -141,7 +195,7 @@
         </div>
     </div>
     <div class="mainWrapper">
-        <nav class="navbar navbar-expand-sm bg-light navbar-light fixed fixed-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed fixed-top">
             <li class="nav-item btn navbar-brand">
                 <a href="#" class="nav-link">H4RSH PATEL</a>
             </li>
@@ -171,7 +225,7 @@
                     </li>
                     <li class="nav-item" style="margin-top: 15px;">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="usr" placeholder="Email...">
+                            <input type="text" class="form-control" id="usr" placeholder="name@example.com">
                         </div>
                     </li>
                     <li class="nav-item btn">
@@ -183,7 +237,7 @@
             </div>
         </nav>
         <div class="frontImage"></div>
-            <div class="recentStory">
+        <div class="recentStory">
             <div>
                 <div class="font-weight-bold text-center">
                     <h1>
@@ -192,32 +246,65 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="text col-sm-10">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="content contentR">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
                             </div>
                         </div>
-                        <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                            <div class="container-fluid ">
-                                <div class="row">
-                                    <div class="text col-sm-10">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="content contentR">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
                             </div>
                         </div>
-                        <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                            <div class="container-fluid ">
-                                <div class="row">
-                                    <div class="text col-sm-10">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
+                        <div class="col-sm-4">
+                                <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="text col-sm-10">
+                                                Lorem ipsum dolor
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="content contentR">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta!
+                                    Porro enim mollitia voluptas.
+                                    Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus
+                                    autem fuga quis ratione iste sit
+                                    harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                    repudiandae, provident
+                                    laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -235,31 +322,64 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                            <div class="container-fluid ">
-                                <div class="row">
-                                    <div class="text col-sm-10">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="content contentP">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                            </div>
                         </div>
-                        <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                            <div class="container-fluid ">
-                                <div class="row">
-                                    <div class="text col-sm-10">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="content contentP">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                            </div>
                         </div>
-                        <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="text col-sm-10">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="content contentP">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
                             </div>
                         </div>
                     </div>
@@ -270,235 +390,350 @@
             </div>
         </div>
         <div class="design">
-                    <div>
-                        <div class="heading font-weight-bold text-center">
-                            <h1>
-                                Design and Animation
-                            </h1>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="text col-sm-10">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="text col-sm-10">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="text col-sm-10">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum minima non aut!
-                                            </div>
+            <div>
+                <div class="heading font-weight-bold text-center">
+                    <h1>
+                        Design and Animation
+                    </h1>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="content contentD">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-outline-success">View more</button>
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content contentD">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content contentD">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-outline-success">View more</button>
+                </div>
+            </div>
         </div>
         <div class="movies">
-                    <div>
-                        <div class="font-weight-bold text-center">
-                            <h1>
-                                Movies
-                            </h1>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="card col-sm-4" style="background-image: url('green-book.jpg');">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="text col-sm-10">
-                                                <h4>Green Book</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card col-sm-4" style="background-image: url('Movie1.jpg');">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="text col-sm-10">
-                                                <h4>Shawashank Redemption</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card col-sm-4" style="background-image: url('1917.jpg');">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="text col-sm-10">
-                                                <h4>1917</h4>
-                                            </div>
+            <div>
+                <div class="font-weight-bold text-center">
+                    <h1>
+                        Movies
+                    </h1>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('green-book.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-outline-success">View more</button>
-                        </div>
-                    </div>
-        </div>
-        <div class="others">
-                    <div>
-                        <div class="font-weight-bold text-center">
-                            <h1>
-                                Others
-                            </h1>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="card col-sm-4"></div>
-                                <div class="card col-sm-4"></div>
-                                <div class="card col-sm-4"></div>
+                            <div class="content contentM">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button class="btn btn-outline-success">View more</button>
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('Movie1.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content contentM">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas.
+                                Delectus eaque, amet odit ipsum eius, inventore voluptate deleniti voluptatibus autem
+                                fuga quis ratione iste sit
+                                harum itaque ipsa. Praesentium eius, molestiae deleniti delectus velit maxime quia
+                                repudiandae, provident
+                                laboriosam, assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="container-fluid card" style="background-image: url('1917.jpg');">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="text col-sm-10">
+                                            Lorem ipsum dolor
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content contentM">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vel eligendi soluta! Porro
+                                enim mollitia voluptas. Delectus eaque, amet odit ipsum eius, inventore voluptate
+                                deleniti voluptatibus autem fuga quis ratione iste sit harum itaque ipsa. Praesentium
+                                eius, molestiae deleniti delectus velit maxime quia repudiandae, provident laboriosam,
+                                assumenda corrupti animi labore...<a href="#">Click to Read More</a>
+                            </div>
                         </div>
                     </div>
-        </div>
-        <div class="py-5 footer bg-dark text-white">
+                    <div class="text-center">
+                        <button class="btn btn-outline-success">View more</button>
+                    </div>
+                </div>
+            </div>
+            <div class="others">
+                <div>
                     <div class="font-weight-bold text-center">
-                        <h4>
-                            Contact Me
-                        </h4>
+                        <h1>
+                            Others
+                        </h1>
                     </div>
-                    <nav class="contactBar navbar navbar-expand-sm mb-3">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-facebook text-white" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-instagram text-white" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-linkedin text-white" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-github text-white" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="line"></div>
-                    <div class="font-weight-bold text-center my-4">
-                        <h4>
-                            Other Links
-                        </h4>
-                    </div>
-                    <div class="container otherLinks">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-sm-4">
-                                <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item">
-                                        <div class="font-weight-bold text-center">
-                                            <h5>
-                                                Heading 1
-                                            </h5>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 1</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 2</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 3</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 4</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- <div class="col-sm-1"></div> -->
-                            <div class="col-sm-4">
-                                <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item">
-                                        <div class="font-weight-bold text-center">
-                                            <h5>
-                                                Heading 2
-                                            </h5>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 1</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 2</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 3</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- <div class="col-sm-1"></div> -->
-                            <div class="col-sm-4">
-                                <ul class="list-group list-group-flush text-center">
-                                    <li class="list-group-item">
-                                        <div class="font-weight-bold text-center">
-                                            <h5>
-                                                Heading 3
-                                            </h5>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 1</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 2</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 3</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">Link 4</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <div class="card col-sm-4"></div>
+                            <div class="card col-sm-4"></div>
+                            <div class="card col-sm-4"></div>
                         </div>
                     </div>
-                    <div class="text-center mt-5">
-                        Copyright &#169 Harsh Patel 2021
+                    <div class="text-center">
+                        <button class="btn btn-outline-success">View more</button>
                     </div>
+                </div>
+            </div>
+
+
+            <!-- Footer -->
+            <div class="py-5 footer bg-dark text-white">
+                <div class="font-weight-bold text-center">
+                    <h4>
+                        Contact Me
+                    </h4>
+                </div>
+                <nav class="contactBar navbar navbar-expand-sm mb-3">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-facebook text-white" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-instagram text-white" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-linkedin text-white" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-github text-white" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="line"></div>
+                <div class="font-weight-bold text-center my-4">
+                    <h4>
+                        Other Links
+                    </h4>
+                </div>
+                <div class="container otherLinks">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item">
+                                    <div class="font-weight-bold text-center">
+                                        <h5>
+                                            Heading 1
+                                        </h5>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 1</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 2</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 3</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <div class="col-sm-1"></div> -->
+                        <div class="col-sm-4">
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item">
+                                    <div class="font-weight-bold text-center">
+                                        <h5>
+                                            Heading 2
+                                        </h5>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 1</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 2</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 3</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <div class="col-sm-1"></div> -->
+                        <div class="col-sm-4">
+                            <ul class="list-group list-group-flush text-center">
+                                <li class="list-group-item">
+                                    <div class="font-weight-bold text-center">
+                                        <h5>
+                                            Heading 3
+                                        </h5>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 1</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 2</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 3</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#">Link 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    Copyright &#169 Harsh Patel 2021
+                </div>
+            </div>
         </div>
-    </div>
 </body>
 <!--  -->
 <script>
     $(document).ready(function () {
-            $('.mainWrapper').hide();
-            setTimeout(function () {
-                $('.mainWrapper').fadeIn();
-            }, 2000);
-            setTimeout(function () {
-                $('.animationWrapper').hide();
-            }, 1999);
-        });
+        $('.mainWrapper').hide();
+        setTimeout(function () {
+            $('.mainWrapper').fadeIn();
+        }, 2500);
+        setTimeout(function () {
+            $('.animationWrapper').hide();
+        }, 2499);
+// 
+// 
+        if(screen.width<700){
+            $(window).click(function (event){
+                if(!event.target.matches('.card')){
+                    $('.card').css({"filter":"brightness(100%)","opacity":"1","scale":"1"})
+                    $('.content').css({"z-index": "-1"})
+                }
+            })
+            $('.card').click(function (event) {
+                $('.card').not(event.target).css({ "filter": "brightness(100%)", "opacity": "1", "scale": "1" })
+                $('.content').css({ "z-index": "-1" })
+            $(event.target).not('.text').css({
+                "filter": "brightness(30%)",
+                "opacity": "0.2",
+                "scale": "1.09"
+                })
+                // $('.card').parent().not(event.target).css({
+                //     "z-index":"1"
+                // })
+                setTimeout(function(){
+                    $(event.target).siblings('.content').css({ "z-index": "1" });
+                },750)
+            })
+        }
+        else{
+            $(window).click(function (event) {
+                if (!event.target.matches('.card')) {
+                    $('.card').css({ "filter": "brightness(100%)", "opacity": "1","scale":"1"})
+                    $('.content').css({ "z-index": "-1" })
+                }
+            })
+            $('.card').click(function (event) {
+                $('.card').not(event.target).css({ "filter": "brightness(100%)", "opacity": "1","scale":"1"})
+                $('.content').css({ "z-index": "-1" })
+                $(event.target).not('.text').css({
+                    "filter": "brightness(30%)",
+                    "opacity": "0.2",
+                    "scale":"1.09"
+                })
+                // $('.card').parent().not(event.target).css({
+                //     "z-index":"1"
+                // })
+                setTimeout(function () {
+                    $(event.target).siblings('.content').css({ "z-index": "1" });
+                }, 750)
+            })
+        }
+    });
 </script>
 <!--  -->
+
 </html>
