@@ -1,5 +1,5 @@
 # HACKER NEWS
-[Click here] to open the app
+[Click here] to open the blog-template
 ### Intro
 This blog template is made using `HTML`, `Bootstrap`, `CSS`, `JS` and `JQuery`.
 ### HOW TO USE
